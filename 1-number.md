@@ -41,11 +41,6 @@ function isPositive(x, y, z) {
     throw new Error('입력값이 잘못되었습니다.');
   }
 }
-
-console.log(isPositive (1,2,3))
-console.log(isPositive (1,2,-3))
-console.log(isPositive (1,2,'3'))
-console.log(isPositive (1,2,'haha'))
 ```
 ### 문제 3
 
@@ -127,10 +122,39 @@ function print(x) {
 ### 문제 7
 
 2 이상의 자연수를 입력받아, 그 수가 소수인지 아닌지를 판별하는 함수를 작성하세요.
+```js
+function isPrime(x) {
+  // 소수: 1과 자기자신밖에 약수가 없는 수
+  // -> 1과 자기자신이 아닌 약수가 하나라도 있으면 소수가 아니다.
+  for (let i = 2; i < x; i++) {
+    if (x % i === 0) {
+      return false
+    }
+  }
+  return true
+}
+```
 
 ### 문제 8
 
 1부터 100까지의 수를 차례대로 출력하되, 자릿수에 3, 6, 9중 하나라도 포함되어 있으면 '짝!'을 대신 출력하는 프로그램을 작성하세요.
+
+```js
+
+function print(x){
+  for(let i=0; i<100; i++){
+    const num = i+1
+    const str = num.toString()
+    if (str.includes('3') || str.includes('6') || str.includes('9')){
+      console.log ('짝!')
+    } else {
+      console.log (num)
+    }
+  }
+}
+
+print (100)
+```
 
 ### 문제 9
 
