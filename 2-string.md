@@ -8,6 +8,45 @@ insensitiveEqual('hello', 'hello'); -> true
 insensitiveEqual('hello', 'Hello'); -> true
 insensitiveEqual('hello', 'world'); -> false
 ```
+```js
+function insensitiveEqual(str1, str2){
+  if(str1.toLowerCase() === str2.toLowerCase()){
+    //모든 문자열을 같은 타입으로 바꿔준다. 소문자나 대문자로.. 비교.
+    return true
+  } else {
+    return false
+  }
+}
+```
+
+```js
+
+function insensitiveEqual(str1, str2){
+  return str1.toLowerCase() === str2.toLowerCase()
+}
+```
+
+```js
+const x = 'hello'.toUpperCase();
+const y = 'world'.toUpperCase();
+
+if (x === y) {
+  console.log(true)
+} else {
+  console.log(false)
+}
+
+function insensitiveEqual(str1, str2) {
+   str1=str1.toUpperCase();
+   str2=str2.toUpperCase();
+   if (str1 === str2){
+     return true
+   } else {
+     return false
+   }
+}
+```
+
 
 ### 문제 2
 
@@ -19,9 +58,56 @@ leftPad('hello', 8); -> '   hello'
 leftPad('hello', 3); -> 'hello'
 ```
 
+
+```js
+function leftPad(s, n) {
+  if (s.length < n) {
+    return s.padStart(n, ' ')
+    // 글자 길이를 출력되는 자연수만큼 맞추는 문제 이므로, padStart 메소드를 이용하여 왼쪽에 자연수를 넣어주고, 오른쪽에 공백 넣어준다.
+  } else {
+    return s
+  }
+}
+```
+
+```js
+function leftPad(s, n) {
+  if (s.length < n) {
+    //s의 길이가 n보다 작으면..
+    const spaceNum = n - s.length
+    //공백숫자를 구해준다. 큰 자연수 - 글자길이.
+    return ' '.repeat(spaceNum) + s
+    //space 한칸을 공백숫자만큼의 repeat으로 채워주고 그다음 글자.
+  } else {
+    return s
+  }
+}
+```
+
 ### 문제 3
 
 문자열을 입력받아, 문자열 안에 들어있는 모든 모음(a, e, i, o, u)의 갯수를 반환하는 함수를 작성하세요.
+
+```js
+
+function count(str) {
+  let num = 0
+  //숫자 셀거야.
+  for (let i = 0; i < str.length; i++) {
+    //문자열 만큼의 숫자
+    if (str[i] === 'a' || str[i] === 'e' || str[i] === 'i' || str[i] === 'o' || str[i] === 'u') {
+      // 문자열하나하나보면서 a,e,i,o,u를 찾는다.
+     num += 1
+     //모음의 숫자를 세는데 0부터가 아니라 1부터 센다.
+    }
+  }
+  return num
+  //문자에 대한 숫자를 반환한다.
+}
+
+```
+
+
 
 ### 문제 4
 
@@ -31,6 +117,26 @@ leftPad('hello', 3); -> 'hello'
 ```
 countChar('tomato'); -> {t: 2, o: 2, m: 1, a: 1}
 ```
+
+```js
+
+function countChar(input) {
+  const obj = {};
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i]
+    if (!(char in obj)){
+      //글자를 본적이 없다면
+      obj[char] = 1
+      //"글자" : 1 을 적어준다.
+    } else {
+      obj[char]++
+      //글자를 본적이 있다면 갯수를 1 증가 시켜준다.
+    }
+  }
+  return obj
+}
+```
+
 
 ### 문제 5
 
